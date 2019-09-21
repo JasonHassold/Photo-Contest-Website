@@ -1,0 +1,54 @@
+{{ define "enter" }}
+
+{{ template "header"}}
+
+		<div class="expand" style="height: 100%; display: flex; align-items: center; justify-content: center;">
+			<div class="container">
+				<div class="row valign-wrapper" style="margin-top: 100px">
+					<form class="col s12 m10 offset-m1 l8 offset-l2" action="/enter" method="post" enctype="multipart/form-data">
+						<div class="row">
+							<div class="input-field col s12 m6">
+								<input type="text" name="first_name" class="validate">
+								<label for="first_name">First Name</label>
+							</div>
+							<div class="input-field col s12 m6">
+								<input type="text" name="last_name" class="validate">
+								<label for="last_name">Last Name</label>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="input-field col s12 m6">
+								<input type="email" name="email" class="validate">
+								<label for="email">Email</label>
+							</div>
+							<div class="input-field col s12 m6">
+								<input type="tel" name="phone" class="validate">
+								<label for="phone">Phone Number</label>
+							</div>
+						</div>
+
+						<div class="file-field">
+							<div class="waves-effect waves-light waves-purple btn btn-purple">
+								<span>Browse</span>
+								<input type="file" name="photo">
+							</div>
+							<div class = "file-path-wrapper">
+							 	<input class = "file-path validate" type = "text"
+									placeholder = "Upload file" />
+							</div>
+						</div>
+						<br>
+						<div style="width: 100%">
+						<div class="center-align waves-effect waves-light waves-purple btn-large btn-purple" style="width: 100%">
+							<input type="submit" class="center-align" style="color: white; width: 100%">
+						</div>
+						</div>
+					</form>
+				</div>		
+			</div>
+		</div>
+	
+{{ template "footer" }}
+
+{{ end }}

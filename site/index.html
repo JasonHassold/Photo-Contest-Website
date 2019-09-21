@@ -1,0 +1,79 @@
+{{ define "index" }}
+
+{{ template "header"}}
+		
+		<div id="camera"> <!-- camera background inmage added and adjusted in adjust.js --> 
+			<div class="row" style="height: 100%">
+				<div class="col s12 m6 offset-m6 l4 offset-l7" style="height: 100%; background-color: rgba(33,33,33, 0.75)">
+					<div id="calltoaction" class="flow-text">
+						<h1 id="h1" class="tk-ff-tisa-sans-web-pro white-text center-align"></h1>
+						<h2 id="h2" class="tk-ff-tisa-sans-web-pro white-text center-align"></h2>
+						<h4 id="h4" class="tk-ff-tisa-sans-web-pro white-text center-align"></h4>
+					</div>
+					<div class="center-btn">
+						<a href="/enter" class="waves-effect waves-light waves-purple btn-large btn-white">Enter</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div>
+				<h3 class="tk-ff-tisa-sans-web-pro center-align">Photo Competition Site</h3>
+				<p class="tk-ff-tisa-sans-web-pro">
+					This website was made by Jason Hassold as a demonstration of my
+					ability to make a well designed and fully functional website. This
+					is a fake photo competition website where contestants can enter their
+					photos into catagories to be voted on. It also includes a voting page
+					which allows visitors to vote on their favorite photo in each category.
+					The logo and tab icon where both designed by me using Adobe Illustrator.
+					The photo of the camera was take by Markus Spiske and I found it on the
+					website pexels.com, however the purple tint was added by me in Photoshop.
+					The main CSS framework I used for this project was MaterializeCSS, 
+					which has a very modern and clean feel. Other reasources were used in
+					the making of this project, but those are the most significant.
+				</p>
+			</div>
+			<br>
+			<div class="row" style="margin-: 50px">
+				<div class="col l4 center-align">
+					<i class="large material-icons">remove_red_eye</i>
+					<h5 class="tk-ff-tisa-sans-web-pro">A Good Eye</h5>
+					<p class="tk-ff-tisa-sans-web-pro">
+						Lorem ipsum id velit sunt adipisicing aute officia sunt minim et.
+						Nisi occaecat duis veniam labore velit ut sunt mollit esse in. Quis
+						nostrud irure laboris non tempor ad aute ad pariatur voluptate
+						reprehenderit magna in ullamco sint. Ea nisi. Aliqua irure. 
+						Lorem ipsum enim proident. Dolor eu qui enim.
+					</p>
+				</div>
+				<div class="col l4 center-align">
+					<i class="large material-icons">photo_camera</i>
+					<h5 class="tk-ff-tisa-sans-web-pro">Equipment</h5>
+					<p class="tk-ff-tisa-sans-web-pro">
+						Incididunt ut ullamco laboris incididunt incididunt incididunt
+						laboris	amet ut in. Amet excepteur nulla laboris exercitation
+						laboris ut qui	est proident cillum do. Laboris enim est et aliquip
+						est consectetur	non et proident ullamco voluptate laborum minim
+						enim sunt ullamco	pariatur.
+					</p>
+				</div>
+				<div class="col l4 center-align">
+					<i class="large material-icons">brush</i>
+					<h5 class="tk-ff-tisa-sans-web-pro">Creativity</h5>
+					<p class="tk-ff-tisa-sans-web-pro">
+						Deserunt fugiat cupidatat aute id irure et voluptate occaecat dolore
+						ad pariatur aute. Occaecat dolore adipisicing velit minim aute ex
+						labore tempor irure duis id dolore fugiat dolor pariatur ut aute
+						proident. Do dolor cillum qui sit ullamco aliquip cupidatat
+						consequat laboris veniam eu adipisicing sunt aute officia.
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="/assets/js/adjust.js"></script>
+
+{{ template "footer" }}
+
+{{ end }}

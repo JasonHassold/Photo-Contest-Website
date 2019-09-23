@@ -44,7 +44,7 @@
 	});
 
 	$.each($("span"), function(index, value) {
-		$.get("/assets/submissions/" + (index+1) + "/votes.txt", function(data) {
+		$.get("/assets/submissions/" + (index+1) + "/votes.txt?_=" + new Date().getTime(), function(data) {
 			$(value).text(data);
 		});
 	});
@@ -54,8 +54,9 @@
 		if (tinted.length == 0) {
 			alert("You must select an image");
 		} else {
-			$.post("/vote?id=" + tinted.attr("id"));
-			window.location.replace("/vote");
+			$.post("/vote?id=" + tinted.attr("id"), function() {
+				window.location.replace("/vote");
+			});
 		}
 	});
 </script>

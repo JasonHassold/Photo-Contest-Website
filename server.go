@@ -23,8 +23,6 @@ func enter(w http.ResponseWriter, r *http.Request) {
 		tmpl := template.Must(template.ParseFiles("site/enter.html", "site/partials/header.html", "site/partials/footer.html"))
 		tmpl.ExecuteTemplate(w, "enter", "")
 	} else if r.Method == "POST" {
-		fmt.Println("POST")
-
 		// Creates new id and folder with that id
 		id := 1
 		made := false
@@ -91,6 +89,8 @@ func enter(w http.ResponseWriter, r *http.Request) {
 
 		// Return to Success page
 		http.Redirect(w, r, "/success", http.StatusFound)
+
+		fmt.Println("Image submitted")
 	}
 }
 
@@ -164,5 +164,7 @@ func main() {
 	err := http.ListenAndServe(":80", nil)
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
+	} else {
+		fmt.Println("Photo Contest Server Running...")
 	}
 }

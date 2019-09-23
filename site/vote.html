@@ -1,95 +1,63 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Photo Contest</title>
-		<link rel="icon" href="images/icon.png" />
-		<!--Import Google Icon Font-->
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" 
-			rel="stylesheet">
-		<!--Import materialize.css-->
-		<link type="text/css" rel="stylesheet" href="css/materialize.min.css" 
-			media="screen,projection"/>
-		<!--Import materialize-social-->
-		<link type="text/css" rel="stylesheet" href="css/materialize-social.css"/>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		<!-- Import style sheet -->
-		<link href="css/style.css" rel="stylesheet">
-		<!-- Adobe TypeKit Font-->
-		<link rel="stylesheet" href="https://use.typekit.net/kbo3hqi.css">
+{{ define "vote" }}
+{{ template "header" }}
 
-		<!--Let browser know website is optimized for mobile-->
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	</head>
-	<body>
+<style type="text/css">
+	.card {
+		background-color: #8C0AA9;
+	}
 
-		<div class="navbar-fixed">
-			<nav class="grey lighten-3">
-				<div class="container logo-container">
-					<div class="nav-wrapper logo-container">
-						<a href="/" class="brand-logo logo-container">
-							<img class="logo" src="images/logo.png">
-						</a>
-						<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons" style="color: black">menu</i></a>
-						<ul class="right hide-on-med-and-down">
-							<li><a href="/" class="nav-text">Home</a></li>
-							<li><a href="/contact.html" class="nav-text">Contact</a></li>
-							<li><a href="/enter.html" class="waves-effect waves-light waves-purple btn btn-purple">Enter</a></li>
-						</ul>
+	.tint {
+		filter: opacity(60%);
+	}
+</style>
+
+<div class="container">
+	<div class="row center-align">
+		<h3>Vote for one of the images</h3>
+	</div>
+	<div class="row" style="display: flex; flex-wrap: wrap;">
+		{{ range .}}
+			<div class="col s12 m6 l4" style="margin-right: auto">
+				<div class="card">
+					<div class="card-image">
+						<img id="{{.}}" src="/assets/submissions/{{.}}/picture.png">
 					</div>
-				</div>
-			</nav>
-		</div>
-		<ul class="sidenav" id="mobile-demo">
-			<li><a href="/" class="nav-text">Home</a></li>
-			<li><a href="/contact.html" class="nav-text">Contact</a></li>
-			<li><a href="/enter.html" class="nav-text">Enter</a></li>
-		</ul>
-
-
-		<main>
-			
-		</main>
-
-
-		<footer class="page-footer grey darken-3">
-			<div class="container">
-				<div class="row">
-					<div class="col l6 s12">
-						<h5 class="white-text">Footer Content</h5>
-						<p class="grey-text text-lighten-4">This is the footer. 
-							The quick links to the right work, however the social 
-							media links do not. After all this is a fake website.</p>
-					</div>
-					<div class="col l4 offset-l2 s12">
-						<h5 class="white-text">Links</h5>
-						<ul>
-							<li><a class="grey-text text-lighten-3" href="/">Home</a></li>
-							<li><a class="grey-text text-lighten-3" href="/contact.html">Contact</a></li>
-							<li><a class="grey-text text-lighten-3" href="/enter.html">Enter</a></li>
-						</ul>
+					<div class="card-content center-align" style="background-color: white; padding: 4px">
+						<p><strong>Votes: <span></span></strong></p>
 					</div>
 				</div>
 			</div>
-			<div class="footer-copyright" style="background-color: rgba(140, 10, 169, 0.75)">
-				<div class="container">
-					© 2018 Copyright Text
-					<a class="waves-effect waves-light btn-floating social facebook right" style="margin-left: 10px;">
-					<i class="fa fa-facebook"></i> Sign in with facebook</a>
-					<a class="waves-effect waves-light btn-floating social instagram right" style="margin-left: 10px;">
-					<i class="fa fa-instagram"></i> Sign in with instagram</a>
-					<a class="waves-effect waves-light btn-floating social twitter right" style="margin-left: 10px;">
-					<i class="fa fa-twitter"></i> Sign in with twitter</a>
-				</div>
-			</div>
-		</footer>
+		{{ end }}
+	</div>
 
-		<!--JavaScript at end of body for optimized loading-->
-		<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-		<script type="text/javascript" src="js/materialize.min.js"></script>
-		<script type="text/javascript">
-			$(document).ready(function(){
-			  $('.sidenav').sidenav();
-			});
-		</script>
-	</body>
-</html>
+	<div class="row">
+		<button class="btn-large waves-effect waves-light waves-purple btn-purple" style="display: block;margin: auto">Vote</button>
+	</div>
+</div>
+
+{{ template "footer" }}
+
+<script type="text/javascript">
+	$(".card").click(function () {
+		$(".card").find("img").removeClass("tint");
+		$(this).find("img").addClass("tint");
+	});
+
+	$.each($("span"), function(index, value) {
+		$.get("/assets/submissions/" + (index+1) + "/votes.txt", function(data) {
+			$(value).text(data);
+		});
+	});
+
+	$("button").click(function() {
+		var tinted = $(".tint");
+		if (tinted.length == 0) {
+			alert("You must select an image");
+		} else {
+			$.post("/vote?id=" + tinted.attr("id"));
+			window.location.replace("/vote");
+		}
+	});
+</script>
+
+{{ end }}

@@ -1,2 +1,4 @@
 # Photo Contest Website
-This is a mock photo contest website base on a freelance contract. It is written with a GoLang backend and a Materialize CSS front-end.
+This is a mock photo contest website base on a freelance contract. It is written with a GoLang backend and a Materialize CSS front-end. The logo and icon were made in Adobe Illustrator, the animated check mark was made in Adobe After Effects, and the home page image was edited in Photoshop.
+
+Here is a link to a demo video: https://youtu.be/5efEgpuYyAY
